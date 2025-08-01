@@ -1,19 +1,24 @@
 ## SSH - Secure Shell
 
-- ### Secure Shell is a network protocol used to securely connect to a remote shell (command line interface)
-- ### It runs over Port 22
+- ### Secure Shell is a network protocol used to securely connect to a remote computer
+- ### Clients initiate a connection on a specific port 22
+
+![](images/ssh_connection.PNG)
 
 ---
 
 ## Shell
 
-- ### A shell is a CLI that allows users to interact directly with the OS
+- ### A shell is a Command line interface
+- ### Allows users to interact directly with the OS
 - ### Examples are terminals
+
+![](images/push_key.PNG)
 
 ---
 
 ## How it works
-### When we create a SSH Key Pair
+### When we create an SSH Key Pair
 - we create a Private key (needs to be kept secure, confidential)
 - we create a Public key (can be safely shared)
 - keys are used for encryption and authentication
@@ -29,7 +34,7 @@
 ``` 
 ssh-keygen -t rsa -b 4096 -C "any personal info e.g. email" 
 ```
-- -t rsa: Specifies the RSA algorithm (type of key)
+- -t rsa: default (key type (cryptosystem))
 - -b 4096: Key length (4096 bits)
 - -C: Adds a label/comment (typically your email)
 
