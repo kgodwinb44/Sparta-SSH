@@ -1,42 +1,58 @@
-# SSH - Secure Shell
+## SSH - Secure Shell
 
-## It is protocol
-## Port 22
-## Used to securely connect to a shell for a specific server
+- ### Secure Shell is a network protocol used to securely connect to a remote shell (command line interface)
+- ### It runs over Port 22
 
-### Shell - Like terminals closest thing to the OS, just a command centre
+---
+
+## Shell
+
+- ### A shell is a CLI that allows users to interact directly with the OS
+- ### Examples are terminals
+
+---
 
 ## How it works
 ### When we create a SSH Key Pair
 - we create a Private key (needs to be kept secure, confidential)
-- we create a Public key
-- uses encryption
+- we create a Public key (can be safely shared)
+- keys are used for encyption and authentication
 
 ![](/images/ssh_keypair.PNG)
 
-## Where to store private keys
-- There is a hidden folder
-- . folders are hidden .ssh
-- Generate key pair:
-- ssh-keygen -t rsa -b 4096 -C "lfairbrass@spartaglobal.com"
-- ssh-keygen generate key
-- -t rsa type of gen
-- -b how long in bits
-- -C just to add some personalisatiopn on the end of the key
-- kyle-github-keypair (private)  kyle-github-keypair.pub (public padlock)
-- Okay to add contects of public key to github
-- $ cat kyle-github-keypair.pub
+### Where to store private keys
+- SSH keys are stored in a hidden dictionary
+- Folders that start with . are hidden
+- defaul ssh path .ssh
+
+### Generate key pair:
+``` 
+ssh-keygen -t rsa -b 4096 -C "any personal info e.g. email" 
+```
+- -t rsa: Specifies the RSA algorithm (type of key)
+- -b 4096: Key length (4096 bits)
+- -C: Adds a label/comment (typically your email)
+
+![](/images/output_key.PNG)
+
+### View the key pair
+``` 
+cat public-key-name 
+```
+
+### Add public key to github
+- ### Start the SSH agent
+```
+eval "$(ssh-agent -s)"
+```
 - Copy and paste key into ssh key on github
-- Check to see if key pair working
-- Use eval to store private key for the session
-- eval 'ssh-agent -s'
-- Start an agent
-
-- Set the environment variables
-
-- Be ready to use ssh-add right after
-
-- echo Agent pid 1948;
-- ADD ssh-add nameky
-- TEST ssh -T git@github.com
-## Use SSH key pair to make a push
+- ### Add the private key
+```
+ssh-add ~/.ssh/nameofprivatekeypair
+```
+- ### Test the connection
+```
+ssh -T git@github.com
+```
+- ### Use SSH key pair to make a git push
+![](/images/push_key.PNG)
